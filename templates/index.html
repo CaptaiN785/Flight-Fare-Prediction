@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Fare Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" class="css">
+</head>
+<body>
+    
+    <nav>
+        <img src="{{ url_for('static', filename='aircraft.gif')}}">
+        <a href="">
+            Flight Fare Prediction
+        </a>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <div class="input-control-wrap">
+                <form class='input-form' action="/predict" method="post" autocomplete="off">
+                    <div class="row">
+                        <div class="input-control">
+                            <label for="source_city">Select Source City</label>
+                            <select name="source_city" id="source_city" class="outline">
+                                {% for city in cities %}
+                                    <option>{{city}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-control">
+                            <label for="destination_city">Select Destination City</label>
+                            <select name="destination_city" id="destination_city" class="outline">
+                                {% for city in cities %}
+                                    <option>{{city}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-control">
+                            <label for="class">Select Class</label>
+                            <select name="class" id="class" class="outline" onchange="updateFlights()">
+                                <option value="economy">Economy</option>
+                                <option value="business">Business</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-control">
+                            <label for="airline">Select Airline</label>
+                            <select name="airline" id="airline" class="outline">
+                                {% for airline in airlines %}
+                                    <option>{{airline}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-control">
+                            <label for="flight">Select Flight</label>
+                            <select name="flight" id="flight" class="outline">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-control">
+                            <label for="departure_time">Select Departure Time</label>
+                            <select name="departure_time" id="departure_time" class="outline">
+                                {% for departure_time in departure_times %}
+                                    <option>{{departure_time}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-control">
+                            <label for="arrival_time">Select Arrival Time</label>
+                            <select name="arrival_time" id="arrival_time" class="outline">
+                                {% for departure_time in departure_times %}
+                                    <option>{{departure_time}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-control">
+                            <label for="stops">Select number of stops</label>
+                            <select name="stops" id="stops" class="outline">
+                                {% for stop in stops %}
+                                    <option>{{stop}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-control">
+                            <label for="duration">Duration of flight</label>
+                            <input type="time" name="duration" id="duration" value="02:00">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-control">
+                            <label for="days_left">Day left</label>
+                            <input type="number" name="days_left" id="days_left" value="10" min="0" max="50">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-control">
+                            <input type="submit" value="Predict">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="home-form-image">
+                <img src="{{ url_for('static', filename='flight.svg')}}" alt="">
+            </div>
+        </div>
+        
+    </section>
+
+    <script>
+        var classes = document.getElementById("class");
+        async function updateFlights(){
+            const res = await fetch("/getflights/"+classes.value);
+            const jsonres = await res.json();
+            const flights = jsonres['flights'];
+
+            const flightElement = document.getElementById("flight");
+            while(flightElement.hasChildNodes())
+                flightElement.removeChild(flightElement.firstChild);
+            flights.forEach(flight => {
+                var option = document.createElement('option');
+                option.innerText = flight;
+                option.value = flight;
+                flightElement.appendChild(option);
+            })           
+        }
+        updateFlights();
+
+    </script>
+
+</body>
+</html>
