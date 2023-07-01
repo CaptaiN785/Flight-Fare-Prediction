@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <section id="result">
+        <div class="result-show">
+            <div class="plane-image">
+                <img src="{{ url_for('static', filename='plane-9922.png')}}" alt="">
+            </div>
+            <div class="result-price">
+                <h2>Fare of the Flight is</h2>
+                <h1><em>&#8377;</em> {{fare}}</h1>
+            </div>
+            <div class="result-redirect">
+                <a href="/">Continue Prediction &#8594;</a>
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+

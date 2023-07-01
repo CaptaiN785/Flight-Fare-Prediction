@@ -29,10 +29,10 @@ nav img{
     min-height:100vh;
     width:100%;
     background:rgb(177, 204, 177);
-    padding:2rem 1rem;
+    padding:2rem 1rem 5rem 1rem;
 }
 #home .container{
-    padding:3rem 1rem;
+    padding:2rem 1rem;
     background: #fff;
     border-radius:10px;
     box-shadow: 0 0 2px #000;
@@ -50,6 +50,10 @@ nav img{
 }
 .input-control-wrap{
     width:60%;
+}
+.container-head{
+    padding-bottom:1rem;
+    text-transform: capitalize;
 }
 .input-form{
     width:100%;
@@ -113,4 +117,75 @@ nav img{
     .row{
         flex-direction: column;
     }
+}
+
+
+/* Result section */
+#result{
+    background: rgb(177, 204, 177);
+    min-height: 100vh;
+    padding:3rem 1rem 1rem 1rem;
+}
+.result-show{
+    background:#fff;
+    min-width: 250px;
+    max-width: 1000px;
+    height:max-content;
+    margin:0 auto; 
+    padding:1rem 3rem;   
+}
+.plane-image{
+    width:100%;
+}
+.plane-image img{
+    width:100%;
+}
+.result-price{
+    text-align: center;
+    color:darkslategray;
+}
+.result-price h1{
+    font-size:3rem;
+}
+.result-price h1 em{
+    font-size:4rem;
+}
+.result-redirect{
+    text-align: right;
+
+}
+.result-redirect a{
+    text-decoration: none;
+    color:darkolivegreen;
+}
+
+
+
+/* Footer section */
+footer{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    right:0;
+    background:darkolivegreen;
+    padding:1rem 2rem;
+    text-align: center;
+    color:#fff;
+    display: flex;
+    gap:1rem;
+    row-gap: 1rem;
+    justify-content: center;
+}
+footer p span{
+    color:red;
+    font-size:1.2rem;
+}
+footer p a{
+    display: inline-block;
+    height:25px;
+}
+footer p a img{
+    height:100%;
+    width:auto;
+    filter:brightness(100)
 }

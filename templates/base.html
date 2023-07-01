@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Fare Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" class="css">
+</head>
+<body>
+    
+    <nav>
+        <img src="{{ url_for('static', filename='aircraft.gif')}}">
+        <a href="">
+            Flight Fare Prediction
+        </a>
+    </nav>
+
+    {% block body %}
+
+    {% endblock body %}
+    
+    <footer>
+        <p>
+            Made with <span>&hearts;</span> by Mukesh Kumar Thakur
+        </p>
+        <p>
+            <a target="_blank" href="https://github.com/CaptaiN785/Flight-Fare-Prediction">
+                <img src="{{ url_for('static', filename='github.png')}}" alt="">
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

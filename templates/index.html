@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flight Fare Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" class="css">
-</head>
-<body>
-    
-    <nav>
-        <img src="{{ url_for('static', filename='aircraft.gif')}}">
-        <a href="">
-            Flight Fare Prediction
-        </a>
-    </nav>
+{% extends 'base.html' %}
+
+{% block body %}
 
     <section id="home">
         <div class="container">
             <div class="input-control-wrap">
+                <h2 class="container-head">Choose your trip</h2>
                 <form class='input-form' action="/predict" method="post" autocomplete="off">
                     <div class="row">
                         <div class="input-control">
@@ -31,7 +19,7 @@
                         <div class="input-control">
                             <label for="destination_city">Select Destination City</label>
                             <select name="destination_city" id="destination_city" class="outline">
-                                {% for city in cities %}
+                                {% for city in cities|reverse %}
                                     <option>{{city}}</option>
                                 {% endfor %}
                             </select>
@@ -41,8 +29,8 @@
                         <div class="input-control">
                             <label for="class">Select Class</label>
                             <select name="class" id="class" class="outline" onchange="updateFlights()">
-                                <option value="economy">Economy</option>
                                 <option value="business">Business</option>
+                                <option value="economy">Economy</option>
                             </select>
                         </div>
                     </div>
@@ -96,7 +84,7 @@
                     </div>
                     <div class="row">
                         <div class="input-control">
-                            <label for="days_left">Day left</label>
+                            <label for="days_left">Days left</label>
                             <input type="number" name="days_left" id="days_left" value="10" min="0" max="50">
                         </div>
                     </div>
@@ -134,8 +122,5 @@
             })           
         }
         updateFlights();
-
     </script>
-
-</body>
-</html>
+{% endblock body %}
