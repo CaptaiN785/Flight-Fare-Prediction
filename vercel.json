@@ -1,14 +1,14 @@
 {
     "builds": [
         {
-            "src": "Flight-Fare-Prediction/app.py",
+            "src": "flight-fare-prediction/app.py",
             "use": "@vercel/python"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "Flight-Fare-Prediction/app.py"
+            "dest": "flight-fare-prediction/app.py"
         }
     ]
 }
