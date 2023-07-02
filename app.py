@@ -25,11 +25,13 @@ if not os.path.exists("model"):
     os.mkdir("model")
 
 if not os.path.exists(model_zip_path):
+    print("Downloading model zip file...")
     data = requests.get(MODEL_LINK)
     with open(model_zip_path, "wb") as zip:
         zip.write(data.content)
 
 if not os.path.exists(ecnomic_model_path) or not os.path.exists(business_model_path):
+    print("Extracting the models...")
     with zipfile.ZipFile(model_zip_path) as zip:
         zip.extractall("model")
 
