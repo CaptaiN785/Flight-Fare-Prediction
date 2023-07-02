@@ -13,10 +13,10 @@
 
 ### Usage
 1. Clone the repository to your local machine:<br>
-   `https://github.com/CaptaiN785/Flight-Fare-Prediction.git`
+   `git clone https://github.com/CaptaiN785/Flight-Fare-Prediction.git`
    
 2. Change to the project directory:<br>
-   `Flight-Fare-Prediction`
+   `cd Flight-Fare-Prediction`
 
 3. Run the Flask app on localhost:<br>
    `python app.py`
