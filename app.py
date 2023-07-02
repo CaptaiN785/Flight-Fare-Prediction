@@ -14,9 +14,9 @@ import pickle
 import numpy as np
 import sklearn
 
-#################### Processing.....
+#################### Processing ########################
 
-MODEL_LINK = "https://storage.googleapis.com/cushare-785.appspot.com/captain/2023-06-30%2009%3A49%3A19.522027%20Fligh%20Fare%20prediction%20model/models.zip"
+MODEL_LINK = "https://firebasestorage.googleapis.com/v0/b/model-up.appspot.com/o/models.zip?alt=media&token={}".format(os.environ.get("ACCESS_TOKEN"))
 model_zip_path = "model/models.zip"
 ecnomic_model_path = "model/economy_model.pkl"
 business_model_path = "model/business_model.pkl"
