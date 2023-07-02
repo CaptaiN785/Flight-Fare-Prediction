@@ -14,6 +14,11 @@ import pickle
 import numpy as np
 import sklearn
 
+DEBUG = True
+
+if DEBUG:
+    os.environ.setdefault("ACCESS_TOKEN", open('var/access_token.txt').read())
+
 #################### Processing ########################
 
 MODEL_LINK = "https://firebasestorage.googleapis.com/v0/b/model-up.appspot.com/o/models.zip?alt=media&token={}".format(os.environ.get("ACCESS_TOKEN"))
@@ -124,4 +129,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=DEBUG)
